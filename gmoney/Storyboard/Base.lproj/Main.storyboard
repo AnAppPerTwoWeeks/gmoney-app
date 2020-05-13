@@ -201,11 +201,37 @@
                         <outlet property="changeCityButton" destination="SNa-y1-TaI" id="1U0-GV-HJd"/>
                         <outlet property="cityName" destination="iU7-lE-COZ" id="k6E-lq-5Nl"/>
                         <outlet property="storeTableView" destination="pby-n4-mdG" id="l8k-dZ-rxW"/>
+                        <segue destination="ApR-I9-hmi" kind="show" identifier="StoreDetail" id="crc-M1-dxs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cMF-zP-4bT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="889" y="137"/>
+        </scene>
+        <!--Store Detail View Controller-->
+        <scene sceneID="jx5-eW-l6c">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="ApR-I9-hmi" customClass="StoreDetailViewController" customModule="gmoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mji-El-yK4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeY-Aw-0r6">
+                                <rect key="frame" x="16" y="485" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="fVw-FB-55n"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Gg7-S5-Rkw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4LG-vZ-E0O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1623" y="138"/>
         </scene>
     </scenes>
 </document>

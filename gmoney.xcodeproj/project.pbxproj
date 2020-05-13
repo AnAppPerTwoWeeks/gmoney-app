@@ -13,6 +13,7 @@
 		D387C87B246BEF9F00B5BABB /* StoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387C87A246BEF9F00B5BABB /* StoreData.swift */; };
 		D387C87D246BF05400B5BABB /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387C87C246BF05400B5BABB /* StoreManager.swift */; };
 		D387C87F246BF0CE00B5BABB /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387C87E246BF0CE00B5BABB /* StoreModel.swift */; };
+		D387C882246C215900B5BABB /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387C881246C215900B5BABB /* StoreDetailViewController.swift */; };
 		D39EE97524571CC0004D64BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39EE97424571CC0004D64BE /* AppDelegate.swift */; };
 		D39EE97724571CC0004D64BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39EE97624571CC0004D64BE /* SceneDelegate.swift */; };
 		D39EE97924571CC0004D64BE /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39EE97824571CC0004D64BE /* CityListViewController.swift */; };
@@ -29,6 +30,7 @@
 		D387C87A246BEF9F00B5BABB /* StoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreData.swift; sourceTree = "<group>"; };
 		D387C87C246BF05400B5BABB /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		D387C87E246BF0CE00B5BABB /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
+		D387C881246C215900B5BABB /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 		D39EE97124571CC0004D64BE /* gmoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gmoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D39EE97424571CC0004D64BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D39EE97624571CC0004D64BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D387C880246C211D00B5BABB /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D39EE97A24571CC0004D64BE /* Main.storyboard */,
+				D39EE97F24571CC1004D64BE /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		D39EE96824571CC0004D64BE = {
 			isa = PBXGroup;
 			children = (
@@ -75,9 +86,8 @@
 				D3EE1FC6245976CA00A3A693 /* Model */,
 				D3EE1FC5245976C500A3A693 /* View */,
 				D3EE1FC4245976B900A3A693 /* Controller */,
+				D387C880246C211D00B5BABB /* Storyboard */,
 				D39EE97D24571CC1004D64BE /* Assets.xcassets */,
-				D39EE97A24571CC0004D64BE /* Main.storyboard */,
-				D39EE97F24571CC1004D64BE /* LaunchScreen.storyboard */,
 				D39EE98224571CC1004D64BE /* Info.plist */,
 			);
 			path = gmoney;
@@ -88,6 +98,7 @@
 			children = (
 				D39EE97824571CC0004D64BE /* CityListViewController.swift */,
 				D387C878246BEA5200B5BABB /* StoreListViewController.swift */,
+				D387C881246C215900B5BABB /* StoreDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,6 +196,7 @@
 			files = (
 				D387C879246BEA5200B5BABB /* StoreListViewController.swift in Sources */,
 				D387C87B246BEF9F00B5BABB /* StoreData.swift in Sources */,
+				D387C882246C215900B5BABB /* StoreDetailViewController.swift in Sources */,
 				D3EE1FC82459813D00A3A693 /* CityList.swift in Sources */,
 				D387C875246BD31200B5BABB /* CityNameCell.swift in Sources */,
 				D39EE97924571CC0004D64BE /* CityListViewController.swift in Sources */,
