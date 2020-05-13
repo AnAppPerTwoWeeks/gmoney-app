@@ -14,20 +14,31 @@ class StoreListViewController: UIViewController {
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var changeCityButton: UIButton!
     @IBOutlet weak var availableStoreLabel: UILabel!
-    
+    private var stores = StoreModel()
     var city = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(city)
-        setupUI()
+        setup()
     }
     
-    func setupUI() {
+    func setup() {
         cityName.text = city
         availableStoreLabel.text = "결제 가능매장"
         changeCityButton.setTitle("지역변경", for: .normal)
+        
+        StoreManager.shared.fetchStores(city) { (stores) in
+            if let list = stores {
+                self.stores.setStores(list)
+            }
+            DispatchQueue.main.async {
+                self.storeTableView.reloadData()
+            }
+        }
+        
     }
+    
+    
     
     @IBAction func changeCity(_ sender: Any) {
         dismiss(animated: true)
@@ -37,11 +48,13 @@ class StoreListViewController: UIViewController {
 
 extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        return stores.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoreListCell", for: indexPath) as? StoreListCell else { return StoreListCell() }
+        cell.update(stores.getStoreByIndex(indexPath.row))
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

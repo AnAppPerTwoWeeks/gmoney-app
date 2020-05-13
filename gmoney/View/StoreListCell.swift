@@ -9,20 +9,29 @@
 import UIKit
 
 class StoreListCell: UITableViewCell {
-
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var address: UILabel!
+    private var kvoToken: NSKeyValueObservation?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
-
+    
+    
+    func update(_ store: Store) {
+        kvoToken = store.observe(\.name, options: .initial) { (store, change) in
+            self.name.text = store.name
+            self.type.text = store.type
+            self.address.text = store.address
+        }
+        
+    }
+    
 }
