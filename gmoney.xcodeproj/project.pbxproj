@@ -7,23 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D387C875246BD31200B5BABB /* CityNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D387C874246BD31200B5BABB /* CityNameCell.swift */; };
 		D39EE97524571CC0004D64BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39EE97424571CC0004D64BE /* AppDelegate.swift */; };
 		D39EE97724571CC0004D64BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39EE97624571CC0004D64BE /* SceneDelegate.swift */; };
-		D39EE97924571CC0004D64BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39EE97824571CC0004D64BE /* ViewController.swift */; };
+		D39EE97924571CC0004D64BE /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39EE97824571CC0004D64BE /* CityListViewController.swift */; };
 		D39EE97C24571CC0004D64BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39EE97A24571CC0004D64BE /* Main.storyboard */; };
 		D39EE97E24571CC1004D64BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D39EE97D24571CC1004D64BE /* Assets.xcassets */; };
 		D39EE98124571CC1004D64BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39EE97F24571CC1004D64BE /* LaunchScreen.storyboard */; };
+		D3EE1FC82459813D00A3A693 /* CityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EE1FC72459813D00A3A693 /* CityList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D387C874246BD31200B5BABB /* CityNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityNameCell.swift; sourceTree = "<group>"; };
 		D39EE97124571CC0004D64BE /* gmoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gmoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D39EE97424571CC0004D64BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D39EE97624571CC0004D64BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D39EE97824571CC0004D64BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D39EE97824571CC0004D64BE /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 		D39EE97B24571CC0004D64BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D39EE97D24571CC1004D64BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D39EE98024571CC1004D64BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D39EE98224571CC1004D64BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3EE1FC72459813D00A3A693 /* CityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,39 @@
 			children = (
 				D39EE97424571CC0004D64BE /* AppDelegate.swift */,
 				D39EE97624571CC0004D64BE /* SceneDelegate.swift */,
-				D39EE97824571CC0004D64BE /* ViewController.swift */,
-				D39EE97A24571CC0004D64BE /* Main.storyboard */,
+				D3EE1FC6245976CA00A3A693 /* Model */,
+				D3EE1FC5245976C500A3A693 /* View */,
+				D3EE1FC4245976B900A3A693 /* Controller */,
 				D39EE97D24571CC1004D64BE /* Assets.xcassets */,
+				D39EE97A24571CC0004D64BE /* Main.storyboard */,
 				D39EE97F24571CC1004D64BE /* LaunchScreen.storyboard */,
 				D39EE98224571CC1004D64BE /* Info.plist */,
 			);
 			path = gmoney;
+			sourceTree = "<group>";
+		};
+		D3EE1FC4245976B900A3A693 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D39EE97824571CC0004D64BE /* CityListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D3EE1FC5245976C500A3A693 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D387C874246BD31200B5BABB /* CityNameCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D3EE1FC6245976CA00A3A693 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3EE1FC72459813D00A3A693 /* CityList.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +168,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D39EE97924571CC0004D64BE /* ViewController.swift in Sources */,
+				D3EE1FC82459813D00A3A693 /* CityList.swift in Sources */,
+				D387C875246BD31200B5BABB /* CityNameCell.swift in Sources */,
+				D39EE97924571CC0004D64BE /* CityListViewController.swift in Sources */,
 				D39EE97524571CC0004D64BE /* AppDelegate.swift in Sources */,
 				D39EE97724571CC0004D64BE /* SceneDelegate.swift in Sources */,
 			);
@@ -287,6 +319,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PJ3R7APTJ8;
 				INFOPLIST_FILE = gmoney/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,7 +327,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.AnAppPerTwoWeeks.gmoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -305,6 +338,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PJ3R7APTJ8;
 				INFOPLIST_FILE = gmoney/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +346,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.AnAppPerTwoWeeks.gmoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
