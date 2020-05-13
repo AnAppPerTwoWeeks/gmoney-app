@@ -38,7 +38,13 @@ class StoreListViewController: UIViewController {
         
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let storeItem = segue.destination as? StoreDetailViewController {
+            if let index = sender as? Int {
+                storeItem.store = stores.getStoreByIndex(index)
+            }
+        }
+    }
     
     @IBAction func changeCity(_ sender: Any) {
         dismiss(animated: true)
