@@ -22,7 +22,7 @@ class CityListViewController: UIViewController {
         cityCollectionView.setContentOffset(.zero, animated: true)
     }
     
-    func setupLabel() {
+    private func setupLabel() {
         selectCityLabel.text = "지역을\n선택하세요"
     }
     

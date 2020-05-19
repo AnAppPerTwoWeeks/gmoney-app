@@ -8,17 +8,21 @@
 
 import Foundation
 
-class StoreModel {
-    private var stores = [Store]()
+class StoreModel: NSObject {
+    @objc dynamic var stores = [Store]()
     
     var count: Int {
         stores.count
     }
     
-    func setStores(_ list: [Store]) {
-        stores = list
+    func update(_ city: String) {
+        NetworkController.fetchStores(city) { (stores) in
+            if let list = stores {
+                self.stores = list
+            }
+        }
     }
-    
+
     func getStoreByIndex(_ at: Int) -> Store {
         return stores[at]
     }

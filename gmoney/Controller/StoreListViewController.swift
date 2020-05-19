@@ -14,7 +14,8 @@ class StoreListViewController: UIViewController {
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var changeCityButton: UIButton!
     @IBOutlet weak var availableStoreLabel: UILabel!
-    private var stores = StoreModel()
+    private var kvoToken: NSKeyValueObservation?
+    private var storeManager = StoreModel()
     var city = ""
     
     override func viewDidLoad() {
@@ -22,26 +23,26 @@ class StoreListViewController: UIViewController {
         setup()
     }
     
-    func setup() {
+    private func setup() {
         cityName.text = city
         availableStoreLabel.text = "결제 가능매장"
         changeCityButton.setTitle("지역변경", for: .normal)
-        
-        StoreManager.shared.fetchStores(city) { (stores) in
-            if let list = stores {
-                self.stores.setStores(list)
-            }
+        storeManager.update(city)
+        updateTableView()
+        }
+
+    private func updateTableView() {
+        kvoToken = storeManager.observe(\.stores, options: .new, changeHandler: { (store, change) in
             DispatchQueue.main.async {
                 self.storeTableView.reloadData()
             }
-        }
-        
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let storeItem = segue.destination as? StoreDetailViewController {
             if let index = sender as? Int {
-                storeItem.store = stores.getStoreByIndex(index)
+                storeItem.store = storeManager.getStoreByIndex(index)
             }
         }
     }
@@ -54,12 +55,12 @@ class StoreListViewController: UIViewController {
 
 extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stores.count
+        return storeManager.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoreListCell", for: indexPath) as? StoreListCell else { return StoreListCell() }
-        cell.update(stores.getStoreByIndex(indexPath.row))
+        cell.update(storeManager.getStoreByIndex(indexPath.row))
         return cell
     }
     

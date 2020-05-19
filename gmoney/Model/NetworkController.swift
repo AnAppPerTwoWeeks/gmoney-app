@@ -1,5 +1,5 @@
 //
-//  StoreManager.swift
+//  NetworkController.swift
 //  gmoney
 //
 //  Created by 장창순 on 13/05/2020.
@@ -8,15 +8,11 @@
 
 import Foundation
 
-struct StoreManager {
+class NetworkController {
     
-    static let shared = StoreManager()
-    
-    private let storeURL = "https://openapi.gg.go.kr/RegionMnyFacltStus?KEY=da478b715bb94a06b244ac200f927f3c&Type=json&pIndex=1&pSize=1000&sigun_nm="
-    
-    init() {}
-    
-    func fetchStores(_ selectedCity: String, onCompletion: @escaping ([Store]?) -> ()) {
+    static func fetchStores(_ selectedCity: String, onCompletion: @escaping ([Store]?) -> ()) {
+        
+        let storeURL = "https://openapi.gg.go.kr/RegionMnyFacltStus?KEY=da478b715bb94a06b244ac200f927f3c&Type=json&pIndex=1&pSize=1000&sigun_nm="
         
         let urlString = "\(storeURL)\(selectedCity)"
         
