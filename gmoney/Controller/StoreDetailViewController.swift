@@ -18,11 +18,10 @@ class StoreDetailViewController: UIViewController {
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var submittedDate: UILabel!
-    
     private let locationManager = CLLocationManager()
     private let regionInMeters: Double = 500
     var store: Store!
-    private var kvoToken: NSKeyValueObservation?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +31,11 @@ class StoreDetailViewController: UIViewController {
     
     private func setup() {
         mapView.layer.cornerRadius = 25
-        
-        kvoToken = store.observe(\.name, options: .initial, changeHandler: { (store, change) in
-            self.name.text = store.name
-            self.type.text = store.type
-            self.address.text = store.address
-            self.phoneNumber.text = store.phoneNumber
-            self.submittedDate.text = store.submittedDate
-        })
+        name.text = store.getName()
+        type.text = store.getType()
+        address.text = store.getAddress()
+        phoneNumber.text = store.getPhoneNumber()
+        submittedDate.text = store.getSubmittedDate()
     }
     
     private func setupLocationManager() {

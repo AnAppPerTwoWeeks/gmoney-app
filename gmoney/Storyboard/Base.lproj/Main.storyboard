@@ -57,10 +57,9 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="hcR-IN-FiE" firstAttribute="centerX" secondItem="cSl-Gq-qOj" secondAttribute="centerX" id="6QR-72-oiD"/>
                                                 <constraint firstAttribute="trailing" secondItem="hcR-IN-FiE" secondAttribute="trailing" id="8QV-7o-RNI"/>
-                                                <constraint firstItem="hcR-IN-FiE" firstAttribute="centerY" secondItem="cSl-Gq-qOj" secondAttribute="centerY" id="Yo1-Kz-KJq"/>
                                                 <constraint firstItem="hcR-IN-FiE" firstAttribute="leading" secondItem="cSl-Gq-qOj" secondAttribute="leading" id="o1e-4d-eBR"/>
+                                                <constraint firstItem="hcR-IN-FiE" firstAttribute="centerY" secondItem="cSl-Gq-qOj" secondAttribute="centerY" id="zhy-QJ-eD3"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="100" height="100"/>

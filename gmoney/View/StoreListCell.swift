@@ -26,12 +26,9 @@ class StoreListCell: UITableViewCell {
     
     
     func update(_ store: Store) {
-        kvoToken = store.observe(\.name, options: .initial) { (store, change) in
-            self.name.text = store.name
-            self.type.text = store.type
-            self.address.text = store.address
-        }
-        
+        name.text = store.getName()
+        type.text = store.getType()
+        address.text = store.getAddress()
     }
     
 }
