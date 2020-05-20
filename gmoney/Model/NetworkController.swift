@@ -24,17 +24,13 @@ class NetworkController {
                     return
                 }
                 
-                if error != nil {
-                    print("에러가 있었습니다.")
-                    return
-                }
                 do {
                     let container = try JSONDecoder().decode(List.self, from: data)
-                    
+
                     onCompletion(container.getStoreList())
                     
                 } catch {
-                    print(error)
+                    //print(error)
                 }
             }
             task.resume()

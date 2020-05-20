@@ -21,7 +21,6 @@ class StoreDetailViewController: UIViewController {
     private let locationManager = CLLocationManager()
     private let regionInMeters: Double = 500
     var store: Store!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,13 +76,11 @@ class StoreDetailViewController: UIViewController {
             fatalError()
         }
     }
-
 }
 
 extension StoreDetailViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

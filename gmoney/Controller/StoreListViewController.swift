@@ -26,7 +26,6 @@ class StoreListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
     }
     
     private func setup() {
@@ -41,12 +40,10 @@ class StoreListViewController: UIViewController {
     private func updateTableView() {
         kvoToken = storeManager.observe(\.stores, options: .new, changeHandler: { (store, change) in
             self.storeManager.searchedStores = store.stores
-            print(self.storeManager.count)
             DispatchQueue.main.async {
                 self.storeTableView.reloadData()
             }
         })
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

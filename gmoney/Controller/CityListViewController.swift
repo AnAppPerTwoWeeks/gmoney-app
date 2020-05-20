@@ -33,7 +33,6 @@ class CityListViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension CityListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

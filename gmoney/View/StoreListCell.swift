@@ -24,11 +24,9 @@ class StoreListCell: UITableViewCell {
         
     }
     
-    
     func update(_ store: Store) {
         name.text = store.getName()
         type.text = store.getType()
         address.text = store.getAddress()
     }
-    
 }
