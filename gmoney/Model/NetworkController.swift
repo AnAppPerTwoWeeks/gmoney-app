@@ -23,6 +23,11 @@ class NetworkController {
                     print("데이터를 받아오지 못했습니다.")
                     return
                 }
+                
+                if error != nil {
+                    print("에러가 있었습니다.")
+                    return
+                }
                 do {
                     let container = try JSONDecoder().decode(List.self, from: data)
                     
@@ -31,10 +36,10 @@ class NetworkController {
                 } catch {
                     print(error)
                 }
-                
             }
             task.resume()
         }
+        
     }
 }
 
