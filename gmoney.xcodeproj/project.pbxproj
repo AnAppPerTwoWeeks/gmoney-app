@@ -97,8 +97,8 @@
 			children = (
 				D39EE97824571CC0004D64BE /* CityListViewController.swift */,
 				D387C878246BEA5200B5BABB /* StoreListViewController.swift */,
-				D387C880246C211D00B5BABB /* Storyboard */,
 				D387C881246C215900B5BABB /* StoreDetailViewController.swift */,
+				D387C880246C211D00B5BABB /* Storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
