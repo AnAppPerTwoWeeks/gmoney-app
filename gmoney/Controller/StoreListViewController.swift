@@ -11,6 +11,10 @@ import UIKit
 class StoreListViewController: UIViewController {
     
     @IBOutlet weak var storeTableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var changeCityButton: UIButton!
     @IBOutlet weak var availableStoreLabel: UILabel!
@@ -18,25 +22,31 @@ class StoreListViewController: UIViewController {
     private var storeManager = StoreModel()
     var city = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        
     }
     
     private func setup() {
         cityName.text = city
         availableStoreLabel.text = "결제 가능매장"
+        searchBar.placeholder = "매장명으로 검색"
         changeCityButton.setTitle("지역변경", for: .normal)
         storeManager.update(city)
         updateTableView()
-        }
-
+    }
+    
     private func updateTableView() {
         kvoToken = storeManager.observe(\.stores, options: .new, changeHandler: { (store, change) in
+            self.storeManager.searchedStores = store.stores
+            print(self.storeManager.count)
             DispatchQueue.main.async {
                 self.storeTableView.reloadData()
             }
         })
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,11 +61,16 @@ class StoreListViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }
 
 extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return storeManager.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,4 +86,17 @@ extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 125
     }
+}
+
+extension StoreListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            storeManager.setSearchedStores()
+            storeTableView.reloadData()
+            return
+        }
+        storeManager.filterStores(searchText)
+        storeTableView.reloadData()
+    }
+    
 }

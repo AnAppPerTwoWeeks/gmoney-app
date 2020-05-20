@@ -86,7 +86,6 @@
 				D3EE1FC6245976CA00A3A693 /* Model */,
 				D3EE1FC5245976C500A3A693 /* View */,
 				D3EE1FC4245976B900A3A693 /* Controller */,
-				D387C880246C211D00B5BABB /* Storyboard */,
 				D39EE97D24571CC1004D64BE /* Assets.xcassets */,
 				D39EE98224571CC1004D64BE /* Info.plist */,
 			);
@@ -98,6 +97,7 @@
 			children = (
 				D39EE97824571CC0004D64BE /* CityListViewController.swift */,
 				D387C878246BEA5200B5BABB /* StoreListViewController.swift */,
+				D387C880246C211D00B5BABB /* Storyboard */,
 				D387C881246C215900B5BABB /* StoreDetailViewController.swift */,
 			);
 			path = Controller;

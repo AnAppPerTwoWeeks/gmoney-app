@@ -11,19 +11,31 @@ import Foundation
 class StoreModel: NSObject {
     @objc dynamic var stores = [Store]()
     
+    var searchedStores = [Store]()
+    
     var count: Int {
-        stores.count
+        searchedStores.count
+    }
+    
+    func setSearchedStores() {
+        searchedStores = stores
+    }
+    
+    func filterStores(_ searchText: String) {
+        searchedStores = stores.filter({ (store: Store) -> Bool in
+            store.name.lowercased().contains(searchText.lowercased())
+        })
     }
     
     func update(_ city: String) {
         NetworkController.fetchStores(city) { (stores) in
             if let list = stores {
-                self.stores = list
+                self.stores.append(contentsOf: list)
             }
         }
     }
-
+    
     func getStoreByIndex(_ at: Int) -> Store {
-        return stores[at]
+        return searchedStores[at]
     }
 }
