@@ -11,18 +11,18 @@ import UIKit
 class StoreListViewController: UIViewController {
     
     @IBOutlet weak var storeTableView: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var changeCityButton: UIButton!
     @IBOutlet weak var availableStoreLabel: UILabel!
-    private var kvoToken: NSKeyValueObservation?
-    private var storeManager = StoreModel()
+    private var storesObserverList = [NSKeyValueObservation]()
+    private var storeModel = StoreModel()
     var city = ""
     
-    
+    private var isSearchBarEmpty: Bool {
+        searchBar.text?.isEmpty ?? true
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -33,23 +33,31 @@ class StoreListViewController: UIViewController {
         availableStoreLabel.text = "결제 가능매장"
         searchBar.placeholder = "매장명으로 검색"
         changeCityButton.setTitle("지역변경", for: .normal)
-        storeManager.update(city)
+        storeModel.update(city)
         updateTableView()
     }
     
     private func updateTableView() {
-        kvoToken = storeManager.observe(\.stores, options: .new, changeHandler: { (store, change) in
-            self.storeManager.searchedStores = store.stores
+        let storesObserver = storeModel.observe(\.stores, options: .new, changeHandler: { (store, change) in
             DispatchQueue.main.async {
                 self.storeTableView.reloadData()
             }
         })
+        
+        let filteredStoresObserver = storeModel.observe(\.filteredStores, options: .new, changeHandler: { (store, change) in
+            DispatchQueue.main.async {
+                self.storeTableView.reloadData()
+            }
+        })
+        
+        storesObserverList.append(storesObserver)
+        storesObserverList.append(filteredStoresObserver)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let storeItem = segue.destination as? StoreDetailViewController {
             if let index = sender as? Int {
-                storeItem.store = storeManager.getStoreByIndex(index)
+                storeItem.store = storeModel.getStoreByIndex(index, isSearchBarEmpty)
             }
         }
     }
@@ -62,17 +70,22 @@ class StoreListViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    deinit {
+        storesObserverList.removeAll()
+    }
+    
 }
 
 extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return storeManager.count
+        
+        return storeModel.countStores(isSearchBarEmpty)
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoreListCell", for: indexPath) as? StoreListCell else { return StoreListCell() }
-        cell.update(storeManager.getStoreByIndex(indexPath.row))
+        cell.update(storeModel.getStoreByIndex(indexPath.row, isSearchBarEmpty))
         return cell
     }
     
@@ -88,12 +101,11 @@ extension StoreListViewController: UITableViewDelegate, UITableViewDataSource {
 extension StoreListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            storeManager.setSearchedStores()
-            storeTableView.reloadData()
-            return
+            storeModel.setFilteredStores()
+        } else {
+            storeModel.filterStores(searchText)
         }
-        storeManager.filterStores(searchText)
-        storeTableView.reloadData()
+        
     }
     
 }
