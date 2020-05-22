@@ -10,19 +10,23 @@ import Foundation
 
 class StoreModel: NSObject {
     @objc dynamic var stores = [Store]()
+    @objc dynamic var filteredStores = [Store]()
+    private var isFiltering = false
     
-    var searchedStores = [Store]()
-    
-    var count: Int {
-        searchedStores.count
+    func setFilteredStores() {
+        filteredStores = stores
     }
     
-    func setSearchedStores() {
-        searchedStores = stores
+    func countStores(_ isFiltering: Bool) -> Int {
+        if !isFiltering {
+            return filteredStores.count
+        } else {
+            return stores.count
+        }
     }
     
     func filterStores(_ searchText: String) {
-        searchedStores = stores.filter({ (store: Store) -> Bool in
+        filteredStores = stores.filter({ (store: Store) -> Bool in
             store.name.lowercased().contains(searchText.lowercased())
         })
     }
@@ -35,7 +39,12 @@ class StoreModel: NSObject {
         }
     }
     
-    func getStoreByIndex(_ at: Int) -> Store {
-        return searchedStores[at]
+    func getStoreByIndex(_ at: Int,_ isFiltering: Bool) -> Store {
+        if !isFiltering {
+            return filteredStores[at]
+        } else {
+            return stores[at]
+        }
     }
+    
 }
